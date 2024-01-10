@@ -46,6 +46,16 @@ def generate_response(from_user, text):
         res.append("こんちゃー")
     elif "おは" in text:
         res.append("おはよー")
+    elif "おやす" in text:
+        res.append("おやすみー")
+    elif "おつ" in text:
+        res.append("おつかれーカツカレー")
+    elif "ありがとう" in text:
+        res.append("どういたしましてー")
+    elif "かわいい" in text:
+        res.append("お前ほどじゃない")
+    elif "かっこいい" in text:
+        res.append("お前こそ")
     else:
         res.append(f"「{text}」ってなんや？")
         return res
