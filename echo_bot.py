@@ -39,6 +39,9 @@ def callback():
 
     return "OK"
 
+import random
+import datetime
+
 def generate_response(from_user, text):
     res = []
     res.append(TextMessage(text=f"おー{from_user}さん！"))
@@ -56,8 +59,14 @@ def generate_response(from_user, text):
         res.append(TextMessage(text="お前ほどじゃない"))
     elif "かっこいい" in text:
         res.append(TextMessage(text="そんなそんな"))
+    elif "何時" in text or "なんじ" in text:
+        now = datetime.datetime.now()
+        res.append(TextMessage(text=f"今は{now.hour}時{now.minute}分{now.second}秒だお"))
     else:
-        res.append(TextMessage(text=f"「{text}」ってなんや？"))
+        msg_templates = ["僕いまお腹痛いよ", "ホゲホゲ", "そすね", "部活行ってくるわ", f"「{text}」ってなんや？", "今しゃべる気ないねん"]
+        msg_num = len(msg_templates)
+        idx = random.randrange(msg_num)
+        res.append(TextMessage(text=msg_templates[idx]))
     return res
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_text_message(event):
