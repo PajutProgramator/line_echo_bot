@@ -39,7 +39,16 @@ def callback():
 
     return "OK"
 
-
+def generate_response(from_user, text):
+    res = []
+    res.append(f"おー{from_user}さん！")
+    if "こん" in text:
+        res.append("こんちゃー")
+    elif "おは" in text:
+        res.append("おはよー")
+    else:
+        res.append(f"「{text}」ってなんや？")
+        return res
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_text_message(event):
     text = event.message.text
@@ -47,6 +56,7 @@ def handle_text_message(event):
         line_bot_api = MessagingApi(api_client)
         if isinstance(event.source, UserSource):
             profile = line_bot_api.get_profile(event.source.user_id)
+            res = generate_response(profile.display_name, text)
             line_bot_api.reply_message_with_http_info(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
