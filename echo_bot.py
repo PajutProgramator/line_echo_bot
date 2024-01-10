@@ -55,7 +55,7 @@ def generate_response(from_user, text):
     elif "かわいい" in text:
         res.append("お前ほどじゃない")
     elif "かっこいい" in text:
-        res.append("お前こそ")
+        res.append("そんなそんな")
     else:
         res.append(f"「{text}」ってなんや？")
         return res
