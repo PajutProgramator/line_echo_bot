@@ -58,7 +58,7 @@ def generate_response(from_user, text):
         res.append(TextMessage(text="そんなそんな"))
     else:
         res.append(TextMessage(text=f"「{text}」ってなんや？"))
-        return res
+    return res
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_text_message(event):
     text = event.message.text
