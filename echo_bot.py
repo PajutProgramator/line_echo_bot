@@ -57,7 +57,7 @@ def generate_response(from_user, text):
     elif "かっこいい" in text:
         res.append(TextMessage(text="そんなそんな"))
     else:
-        res.append(TextMessage(text=f"「{text}」ってなんや？")
+        res.append(TextMessage(text=f"「{text}」ってなんや？"))
         return res
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_text_message(event):
